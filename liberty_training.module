@@ -4,3 +4,15 @@
  * @file
  * Module file for Liberty Training.
  */
+
+/**
+ * Implements hook_theme().
+ */
+function liberty_training_theme() {
+  return array(
+    'liberty_list' => array(
+      'variables' => array('count' => NULL),
+      'template' => 'liberty-go',
+    ),
+  );
+}

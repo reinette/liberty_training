@@ -6,6 +6,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Session\AccountProxy;
+use Drupal\Component\Utility\Xss;
 
 class FirstController extends ControllerBase {
 
@@ -40,11 +41,17 @@ class FirstController extends ControllerBase {
       $account = $this->user;
       $name = $account->getUsername();
 
-	  $this->loggerFactoryService->get('default')->debug($name);
+	  $this->loggerFactoryService->get('test')->debug($name);
 
-      $output = array(
-          '#markup' => $name . " " . $count,
+/*      $output = array(
+          '#markup' => $name . " " . Xss::filter($count),
       );
+*/
+      	$output = array(
+      		'#theme' => 'liberty_list',
+      		'#count' => Xss::filter($count)
+      	);
+
       return $output;
     }
 
