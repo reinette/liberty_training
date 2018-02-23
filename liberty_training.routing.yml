@@ -1,0 +1,13 @@
+liberty_training.first:
+    path: '/first-controller'
+    defaults:
+      _controller: '\Drupal\liberty_training\Controller\FirstController::go'
+    requirements:
+      _permission: 'access content'
+
+liberty_training.second:
+    path: '/first-controller/{count}'
+    defaults:
+      _controller: '\Drupal\liberty_training\Controller\FirstController::go2'
+    requirements:
+      _permission: 'access content'
